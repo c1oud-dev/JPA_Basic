@@ -10,6 +10,14 @@ public class Member {
     private Long id; //id랑 name을 넣는 이유는 현재 db에 있기 때문
     private String name;
 
+    public Member() { //기본 생성자
+    }
+
+    public Member(Long id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
     public Long getId() {
         return id;
     }
