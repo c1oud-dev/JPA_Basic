@@ -38,7 +38,8 @@ public class JpaMain {
 
             Member findMember1 = em.find(Member.class, 101L);
             //1. 위에서 find를 사용해 조회를 했지만 DB에 selectquery가 안 나간 상태
-            Member findMember2 = em.find(Member.class, 101L);*/
+            Member findMember2 = em.find(Member.class, 101L);
+            //member2는 캐시에 없어서 DB에서 조회를 한 후 캐시에 저장하고 반환한다.*/
 
             /* DB에 나가는지 확인해보기
             //Member.java 클래스에 Member 생성자 생성필요
@@ -63,9 +64,14 @@ public class JpaMain {
             //실행 시점을 확인하고 싶으면 "======"을 commit 전에 출력해보자.*/
 
             //준영속 상태 확인해보기
-            Member member = em.find(Member.class, 150L);
-            member.setName("AAAAA");
-            em.detach(member); //회원 엔티티를 영속성 컨텍스트에서 분리, 준영속 상태
+            //Member member = em.find(Member.class, 150L);
+
+            Member member = new Member();
+            member.setId(1L);
+            member.setUsername("A");
+            member.setRoleType(RoleType.USER);
+
+            em.persist(member);
 
 
             tx.commit();
