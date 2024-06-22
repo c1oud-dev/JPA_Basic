@@ -67,12 +67,9 @@ public class JpaMain {
             //Member member = em.find(Member.class, 150L);
 
             Member member = new Member();
-            member.setId(1L);
-            member.setUsername("A");
-            member.setRoleType(RoleType.USER);
+            member.setUsername("C");
 
             em.persist(member);
-
 
             tx.commit();
         } catch (Exception e) {
